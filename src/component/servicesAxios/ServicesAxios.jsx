@@ -14,6 +14,25 @@ export const cargarDatos = async () =>{
 }
 export const cargarDatosPosts = async (idposts) =>{
     const datos = await axios.get(`http://localhost:3001/posts/cargar-post/${idposts}`)
+    console.log(datos.data)
+    return datos.data
+}
+export const enviarDatosPosts = async (data) =>{
+    const datos = await axios.post(`http://localhost:3001/posts/crear-post`, data,{
+        headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+    })
+    console.log(datos.data)
     return datos.data
 }
 
+export const ComentarioPosts = async (idposts, data) =>{
+    const datos = await axios.post(`http://localhost:3001/comentarios/${idposts}`,data)
+    return datos.data
+}
+
+export const cargarDatosComentariosById = async (idposts) =>{
+    const datos = await axios.get(`http://localhost:3001/comentarios/cargar/${idposts}`)
+    return datos.data
+}

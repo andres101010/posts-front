@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { cargarDatos } from '../servicesAxios/ServicesAxios';
 
 export const UseGlobalHooks = () => {
-    const [idposts, setIdPosts] = useState("")
+    const [dataComentario, setDataComentario] = useState([]);
+    const [contenidoComentario, setContenidoComentario] = useState("");
+    const [fechaPublicacionComentarios, setFechaPublicacionComentario] = useState("");
+    const [usuarioComentario, setUsuarioComentario] = useState("");
+    const [showForm, setShowForm] = useState(false);
+    const [idpostState, setIdPostState] = useState("");
     const [isAllowed, setIsAllowed] = useState(false);
     const [user,setUser] = useState("")
     const [password,setPassword] = useState("")
@@ -11,6 +16,11 @@ export const UseGlobalHooks = () => {
     const [data, setData] = useState([]);
     const [serch, setSerch] = useState("");
     const [posts, setPosts] = useState([]);
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [fecha, setFecha] = useState("");
+    const [userPosts, setUserPosts] = useState("");
+    const [file, setFile] = useState(null);
     const onchangeUser = (e) => {setUser(e.target.value);}
     const onchangePassword = (e) => {setPassword(e.target.value);}
     const timeAlert = () =>{
@@ -57,9 +67,29 @@ export const UseGlobalHooks = () => {
     isAllowed,
     setIsAllowed,
     getDataAllowed,
-    idposts,
-    setIdPosts,
+    idpostState,
+    setIdPostState,
     posts,
-    setPosts
+    setPosts,
+    titulo,
+    setTitulo,
+    contenido,
+    setContenido,
+    fecha,
+    setFecha,
+    userPosts,
+    setUserPosts,
+    file,
+    setFile,
+    showForm,
+    setShowForm,
+    contenidoComentario,
+    setContenidoComentario,
+    fechaPublicacionComentarios,
+    setFechaPublicacionComentario,
+    usuarioComentario,
+    setUsuarioComentario,
+    dataComentario,
+    setDataComentario
   }
-}
+};

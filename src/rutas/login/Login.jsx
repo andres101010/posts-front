@@ -7,11 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { UseGlobalHooks } from '../../component/hooks/UseGlobalHooks';
 
 import { inicioSecion } from '../../component/servicesAxios/ServicesAxios';
- const Login = () => {
- 
+import { useState } from 'react';
+ const Login = ({setIsAllowed}) => {
+ const [showAlertUserNoExiste, setShowAlertUserNoExiste] = useState(false);
  const {
   user,
+  setUser,
   password,
+  setPassword,
   onchangeUser,
   onchangePassword,
   showAlert,
@@ -20,10 +23,14 @@ import { inicioSecion } from '../../component/servicesAxios/ServicesAxios';
   setShowAlertError,
   timeAlert,
   timeAlertError,
-  
   getDataAllowed
  } = UseGlobalHooks();
 
+ const timeAlertNoexiste = () => {
+  setTimeout(()=>{
+    setShowAlertUserNoExiste(false)
+  }, 3000)
+ }
   const navegar = () => {
   setTimeout(() => {
    navigate('/')
@@ -43,9 +50,13 @@ import { inicioSecion } from '../../component/servicesAxios/ServicesAxios';
       setShowAlert(true);
       timeAlert()
       navegar()
+      setIsAllowed(true);
     }
    } catch (error) {
-    alert("Usuario no existe!!")
+    setShowAlertUserNoExiste(true);
+    timeAlertNoexiste();
+    setUser("")
+    setPassword("")
    }
   };
 
@@ -60,9 +71,15 @@ import { inicioSecion } from '../../component/servicesAxios/ServicesAxios';
           <Typography variant='h1' color={'gray'} m={'15px'}>Login</Typography>
       </Grid>
       {
+        showAlertUserNoExiste &&
+        <Grid item md={8} xs={12}  style={{width:'200px' ,margin:'auto'}}>
+             <Alert severity="error">Usuario no existe !!!</Alert>
+        </Grid>
+      }
+      {
         showAlert &&
         <Grid item md={8} xs={12}  style={{width:'200px' ,margin:'auto'}}>
-             <Alert severity="success">Inicio sesion exitoso!!!</Alert>
+             <Alert severity="success">Inicio de sesion exitoso!!!</Alert>
         </Grid>
       }
       {
@@ -83,11 +100,11 @@ import { inicioSecion } from '../../component/servicesAxios/ServicesAxios';
       autoComplete="off"
     >
       
-      <TextField id="user" label="user" variant="filled" onChange={onchangeUser}/>
-      <TextField id="password" type='password' label="password" variant="filled" onChange={onchangePassword} />
+      <TextField id="user" value={user} label="user" variant="filled" onChange={onchangeUser}/>
+      <TextField id="password" value={password} type='password' label="password" variant="filled" onChange={onchangePassword} />
      
     </Box>
-    <Button variant='contained' onClick={()=>{inicio()}} style={{margin:'5px'}} >Enviar</Button>
+    <Button variant='contained' onClick={()=>{inicio()}} style={{margin:'5px'}} >iniciar sesion</Button>
     <Button variant='contained' onClick={()=>{register()}}>Registrarse</Button>
       </Grid>
     </Grid>

@@ -21,7 +21,6 @@ import { UseGlobalHooks } from '../../component/hooks/UseGlobalHooks';
    getData();
   },[])
   const cargarTodo = ((obj)=>{
-    setIdPosts(obj.idposts)
     const id = obj.idposts
     console.log(id) 
     

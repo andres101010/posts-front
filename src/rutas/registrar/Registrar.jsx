@@ -55,7 +55,7 @@ const Registrar = () => {
       {
         showAlert &&
         <Grid item md={8} xs={12}  style={{width:'200px' ,margin:'auto'}}>
-            <Alert severity="success">Envio de datos exitoso!!!</Alert>
+            <Alert severity="success">Tu registro exitoso!!!</Alert>
         </Grid>
       }
 
