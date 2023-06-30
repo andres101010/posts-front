@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import { UseGlobalHooks } from '../../component/hooks/UseGlobalHooks';
+import { cargarArchivos } from '../../component/servicesAxios/ServicesAxios';
 
  const Inicio = ({isAllowed}) => {
+  
  const {
   data,
   serch,
@@ -16,6 +18,8 @@ import { UseGlobalHooks } from '../../component/hooks/UseGlobalHooks';
   setIdPosts,
   idposts
  } = UseGlobalHooks();
+ 
+ 
 
  useEffect(()=>{
    getData();
@@ -25,11 +29,9 @@ import { UseGlobalHooks } from '../../component/hooks/UseGlobalHooks';
     console.log(id) 
     
     navigate(`/comentario/${id}`)
-  })
+  });
+ 
   
-  // const ir = (idposts)=>{
-  //   console.log(idposts)
-  // }
   const navigat = ()=>{
     navigate('/newPosts')
   }

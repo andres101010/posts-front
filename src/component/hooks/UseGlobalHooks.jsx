@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { cargarDatos } from '../servicesAxios/ServicesAxios';
 
 export const UseGlobalHooks = () => {
+    const [contenidoSubComentario, setContenidoSubComentario] = useState("")
+    const [fechaSubComentario, setFechaSubComentario] = useState("")
+    const [usuarioSubComentario, setUsuarioSubComentario] = useState("")
     const [dataComentario, setDataComentario] = useState([]);
     const [contenidoComentario, setContenidoComentario] = useState("");
     const [fechaPublicacionComentarios, setFechaPublicacionComentario] = useState("");
@@ -90,6 +93,12 @@ export const UseGlobalHooks = () => {
     usuarioComentario,
     setUsuarioComentario,
     dataComentario,
-    setDataComentario
+    setDataComentario,
+    contenidoSubComentario,
+    setContenidoSubComentario,
+    fechaSubComentario,
+    setFechaSubComentario,
+    usuarioSubComentario,
+    setUsuarioSubComentario
   }
 };
